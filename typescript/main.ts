@@ -67,8 +67,8 @@ function displayGroceryItem(myItem:GroceryItems):void{
     let displayDiv = $("display");
 
     // Create h2 with food title
-    let foodHeading = document.createElement("h2");
-    foodHeading.innerText = myItem.item;
+    // let foodHeading = document.createElement("h2");
+    // foodHeading.innerText = myItem.item;
 
     let itemInfo = document.createElement("p");
     

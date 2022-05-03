@@ -42,8 +42,6 @@ function getGroceryItem() {
 }
 function displayGroceryItem(myItem) {
     var displayDiv = $("display");
-    var foodHeading = document.createElement("h2");
-    foodHeading.innerText = myItem.item;
     var itemInfo = document.createElement("p");
     itemInfo.innerText = "Item: ".concat(myItem.item, " \n Price: $").concat(myItem.price, " \n Category: ").concat(myItem.category);
     displayDiv.appendChild(itemInfo);

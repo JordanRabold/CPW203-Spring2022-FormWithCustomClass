@@ -8,6 +8,11 @@ h4{
     margin-left: 26em;
 }
 
+p{
+    display: inline-block;
+    margin-left: 24.6em;
+}
+
 input[type=text]{
     padding: .25em;
     margin: .5em;
@@ -55,6 +60,10 @@ input[type=button]{
     }
 
     form input[type=button]{
+        margin-left: 0em;
+    }
+
+    p{
         margin-left: 0em;
     }
 }
