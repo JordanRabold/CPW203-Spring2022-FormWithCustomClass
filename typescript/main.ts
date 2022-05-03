@@ -11,14 +11,28 @@ window.onload = function(){
 }
 
 // ADD validation code
-function isValid(){
-    
+function isValid():boolean{
+    let isDataValid:boolean = true;
+
+    let itemBox:HTMLInputElement = <HTMLInputElement>$("item");
+    let enteredItem:string = itemBox.value;
+    if(enteredItem == ""){
+        isDataValid = false;
+        itemBox.nextElementSibling.innerHTML = `Item is required and must be in "abc" format`
+    }
+
+    let priceBox:HTMLInputElement = <HTMLInputElement>$("price");
+    let enteredPrice:string = priceBox.value;
+    if(enteredPrice == "" || isNaN(parseFloat(enteredPrice))){
+        isDataValid = false;
+        priceBox.nextElementSibling.innerHTML = `Price is required and must be a number`
+    }
     return true;
 }
 
 
 function addGroceryItem(){
-    alert("Added to grocery list");
+    console.log("Added to grocery list");
     if(isValid()){
         let groceryItem = getGroceryItem();
         displayGroceryItem(groceryItem);
@@ -59,7 +73,7 @@ function displayGroceryItem(myItem:GroceryItems):void{
     let itemInfo = document.createElement("p");
     
     // Create paragraph with grocery item details
-    itemInfo.innerText = `Item: ${myItem.item} \n Price: $${myItem.price} \n Category: ${myItem.category}`
+    itemInfo.innerText = `Item: ${myItem.item} \n Price: $${myItem.price} \n Category: ${myItem.category}`;
 
     // Add h2 in the <div id="display">
     //displayDiv.appendChild(foodHeading);

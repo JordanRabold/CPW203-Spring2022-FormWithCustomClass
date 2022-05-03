@@ -8,10 +8,23 @@ window.onload = function () {
     addBtn.onclick = addGroceryItem;
 };
 function isValid() {
+    var isDataValid = true;
+    var itemBox = $("item");
+    var enteredItem = itemBox.value;
+    if (enteredItem == "") {
+        isDataValid = false;
+        itemBox.nextElementSibling.innerHTML = "Item is required and must be in \"abc\" format";
+    }
+    var priceBox = $("price");
+    var enteredPrice = priceBox.value;
+    if (enteredPrice == "" || isNaN(parseFloat(enteredPrice))) {
+        isDataValid = false;
+        priceBox.nextElementSibling.innerHTML = "Price is required and must be a number";
+    }
     return true;
 }
 function addGroceryItem() {
-    alert("Added to grocery list");
+    console.log("Added to grocery list");
     if (isValid()) {
         var groceryItem = getGroceryItem();
         displayGroceryItem(groceryItem);
