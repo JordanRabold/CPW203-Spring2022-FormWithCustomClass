@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/site.css">
-    <title>Add Product Form</title>
+    <title>Add Grocery Form</title>
 </head>
 <body>
     <h1>Grocery List</h1>
@@ -16,25 +16,32 @@
     </div>
 
     <form>
-        <label for="title">Item: </label>
-        <input id="title" type="text">
+        <label for="item">Item: </label>
+        <input id="item" type="text">
         <br>
 
         <label for="price">Price: </label>
         <input id="price" type="text">
         <br>
 
-        <label for="rating"></label>
-        <select id="rating">
-            <option>Please choose a Dietary Restriction</option>
-            <option>Gluten Free</option>
-            <option>GMO Free</option>
-            <option>Dairy Free</option>
-            <option>Vegan</option>
+        <label for="category"></label>
+        <select id="category">
+            <option>Food Category</option>
+            <option>Fresh Produce</option>
+            <option>Grains</option>
+            <option>Meat/Protein/option>
+            <option>Dairy</option>
+            <option>Baking Goods</option>
+            <option>Freezer</option>
+            <option>Canned/Dried Foods</option>
+            <option>Condiments/Spices</option>
+            <option>Snacks</option>
         </select>
         <br>
 
         <input type="button" value="Add Grocery Item">
+
+        <script src="/js/main.js"></script>
     </form>
 </body>
 </html>

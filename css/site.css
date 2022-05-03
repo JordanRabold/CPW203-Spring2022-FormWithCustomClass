@@ -11,13 +11,13 @@ input[type=text]{
     margin: .5em;
 }
 
-label[for=title], label[for=price]{
+label[for=item], label[for=price]{
     width: 40%;
     display: inline-block;
     text-align: right;
 }
 
-label[for=rating]{
+label[for=category]{
     display: inline-block;
     margin-left: 23.8em;
     margin-top: 1em;
