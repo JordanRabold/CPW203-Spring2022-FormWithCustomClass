@@ -5,20 +5,23 @@ class GroceryItems{
     // isDigitalOnly:boolean; // boolean example
 } 
 
-function $(id:string){
-    return document.getElementById(id);
-}
-
 window.onload = function(){
     let addBtn = <HTMLElement>document.querySelector("input[type=button]");
     addBtn.onclick = addGroceryItem;
 }
 
+// ADD validation code
+function isValid(){
+    
+    return true;
+}
+
+
 function addGroceryItem(){
     alert("Added to grocery list");
     if(isValid()){
         let groceryItem = getGroceryItem();
-        displayItem(groceryItem);
+        displayGroceryItem(groceryItem);
     }
 }
 
@@ -30,7 +33,7 @@ function addGroceryItem(){
 function getGroceryItem():GroceryItems{
     // TODO: Create grocery item
     // TODO: populate data from the form
-    // TODO: Return groceryItem
+    // TODO: Return foodItem
     let foodItem = new GroceryItems(); // created grocery item
 
     let itemInput = <HTMLInputElement>$("item"); // Getting input element item data
@@ -42,15 +45,30 @@ function getGroceryItem():GroceryItems{
     let categoryInput = <HTMLSelectElement>$("category"); // Getting select element from category
     foodItem.category = categoryInput.value; // populated data from the form
 
-    return foodItem;
+    return foodItem; // Returned foodItem
 }
 
 function displayGroceryItem(myItem:GroceryItems):void{
     // TODO: Display video game below the form
+    let displayDiv = $("display");
+
+    // Create h2 with food title
+    let foodHeading = document.createElement("h2");
+    foodHeading.innerText = myItem.item;
+
+    let itemInfo = document.createElement("p");
+    
+    // Create paragraph with grocery item details
+    itemInfo.innerText = `Item: ${myItem.item} \n Price: $${myItem.price} \n Category: ${myItem.category}`
+
+    // Add h2 in the <div id="display">
+    //displayDiv.appendChild(foodHeading);
+    // Add <p> item info
+    displayDiv.appendChild(itemInfo);
 }
 
-// ADD validation code
-function isValid(){
-    return true;
+function $(id:string){
+    return document.getElementById(id);
 }
+
 
