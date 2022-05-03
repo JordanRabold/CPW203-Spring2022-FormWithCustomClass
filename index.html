@@ -4,17 +4,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/site.css">
     <title>Add Product Form</title>
 </head>
 <body>
-    <h1>Add Video Game</h1>
+    <h1>Grocery List</h1>
+    <h4>Add items to your list below</h4>
 
     <div id="validation-summary">
         <p>Errors go here...</p>
     </div>
 
     <form>
-        <label for="title">Title: </label>
+        <label for="title">Item: </label>
         <input id="title" type="text">
         <br>
 
@@ -24,19 +26,15 @@
 
         <label for="rating"></label>
         <select id="rating">
-            <option>Please choose a rating</option>
-            <option>E</option>
-            <option>T</option>
-            <option>M</option>
-            <option>AO</option>
+            <option>Please choose a Dietary Restriction</option>
+            <option>Gluten Free</option>
+            <option>GMO Free</option>
+            <option>Dairy Free</option>
+            <option>Vegan</option>
         </select>
         <br>
 
-        <lablel for="online">Online Only?</lablel>
-        <input type="checkbox" id="online">
-        <br>
-
-        <input type="button" value="Add New Video Game">
+        <input type="button" value="Add Grocery Item">
     </form>
 </body>
 </html>
