@@ -10,7 +10,10 @@ window.onload = function(){
     addBtn.onclick = addGroceryItem;
 }
 
-// ADD validation code
+/**
+ * Validate input
+ * @returns isDataValid
+ */
 function isValid():boolean{
     let isDataValid = true;
 
@@ -31,7 +34,7 @@ function isValid():boolean{
     let categoryBox = (<HTMLOptionElement>$("category")).value;
     if(categoryBox == ""){
         isDataValid = false;
-        addErrorMessage("Must choose a category");
+        addErrorMsgWithCustomClass("Must choose a category", "category-error");
     }
     return isDataValid;
 }
@@ -39,6 +42,14 @@ function isValid():boolean{
 function addErrorMessage(errMsg:string) {
     let errSummary = $("validation-summary"); // get validation summary off webpage
     let errItem = document.createElement("li"); // create list item 
+    errItem.innerText = errMsg; // fill the error list
+    errSummary.appendChild(errItem);
+}
+
+function addErrorMsgWithCustomClass(errMsg:string, cssClass:string){
+    let errSummary = $("validation-summary"); // get validation summary off webpage
+    let errItem = document.createElement("li"); // create list item 
+    errItem.classList.add(cssClass); // allows you to customize each list item
     errItem.innerText = errMsg; // fill the error list
     errSummary.appendChild(errItem);
 }

@@ -24,13 +24,20 @@ function isValid() {
     var categoryBox = $("category").value;
     if (categoryBox == "") {
         isDataValid = false;
-        addErrorMessage("Must choose a category");
+        addErrorMsgWithCustomClass("Must choose a category", "category-error");
     }
     return isDataValid;
 }
 function addErrorMessage(errMsg) {
     var errSummary = $("validation-summary");
     var errItem = document.createElement("li");
+    errItem.innerText = errMsg;
+    errSummary.appendChild(errItem);
+}
+function addErrorMsgWithCustomClass(errMsg, cssClass) {
+    var errSummary = $("validation-summary");
+    var errItem = document.createElement("li");
+    errItem.classList.add(cssClass);
     errItem.innerText = errMsg;
     errSummary.appendChild(errItem);
 }
