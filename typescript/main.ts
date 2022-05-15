@@ -12,27 +12,44 @@ window.onload = function(){
 
 // ADD validation code
 function isValid():boolean{
-    let isDataValid:boolean = true;
+    let isDataValid = true;
 
     let itemBox:HTMLInputElement = <HTMLInputElement>$("item");
     let enteredItem:string = itemBox.value;
     if(enteredItem == ""){
         isDataValid = false;
-        itemBox.nextElementSibling.innerHTML = `Item is required and must be in "abc" format`
+        let errSummary = $("validation-summary"); // get validation summary off webpage
+        let errItem = document.createElement("li"); // create list item 
+        errItem.innerText = "Item is required and must be in 'abc' format"; // fill the error list
+
+        errSummary.appendChild(errItem); // add list item to unordered list
     }
 
     let priceBox:HTMLInputElement = <HTMLInputElement>$("price");
     let enteredPrice:string = priceBox.value;
     if(enteredPrice == "" || isNaN(parseFloat(enteredPrice))){
         isDataValid = false;
-        priceBox.nextElementSibling.innerHTML = `Price is required and must be a number`
+        let errSummary = $("validation-summary"); // get validation summary off webpage
+        let errItem = document.createElement("li"); // create list item 
+        errItem.innerText = "Price is required and must be a number"; // fill the error list
+
+        errSummary.appendChild(errItem); // add list item to unordered list
     }
-    return true;
+    return isDataValid;
 }
 
+/**
+ * Clears all errors in the validation summary
+ */
+
+function clearAllErrors(){
+    let errSummary = $("validation-summary");
+    errSummary.innerText = "";
+}
 
 function addGroceryItem(){
     console.log("Added to grocery list");
+    clearAllErrors();
     if(isValid()){
         let groceryItem = getGroceryItem();
         displayGroceryItem(groceryItem);
@@ -45,9 +62,6 @@ function addGroceryItem(){
  * @returns 
  */
 function getGroceryItem():GroceryItems{
-    // TODO: Create grocery item
-    // TODO: populate data from the form
-    // TODO: Return foodItem
     let foodItem = new GroceryItems(); // created grocery item
 
     let itemInput = <HTMLInputElement>$("item"); // Getting input element item data
@@ -63,12 +77,7 @@ function getGroceryItem():GroceryItems{
 }
 
 function displayGroceryItem(myItem:GroceryItems):void{
-    // TODO: Display video game below the form
     let displayDiv = $("display");
-
-    // Create h2 with food title
-    // let foodHeading = document.createElement("h2");
-    // foodHeading.innerText = myItem.item;
 
     let itemInfo = document.createElement("p");
     

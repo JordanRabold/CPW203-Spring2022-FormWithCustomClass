@@ -13,18 +13,29 @@ function isValid() {
     var enteredItem = itemBox.value;
     if (enteredItem == "") {
         isDataValid = false;
-        itemBox.nextElementSibling.innerHTML = "Item is required and must be in \"abc\" format";
+        var errSummary = $("validation-summary");
+        var errItem = document.createElement("li");
+        errItem.innerText = "Item is required and must be in 'abc' format";
+        errSummary.appendChild(errItem);
     }
     var priceBox = $("price");
     var enteredPrice = priceBox.value;
     if (enteredPrice == "" || isNaN(parseFloat(enteredPrice))) {
         isDataValid = false;
-        priceBox.nextElementSibling.innerHTML = "Price is required and must be a number";
+        var errSummary = $("validation-summary");
+        var errItem = document.createElement("li");
+        errItem.innerText = "Price is required and must be a number";
+        errSummary.appendChild(errItem);
     }
-    return true;
+    return isDataValid;
+}
+function clearAllErrors() {
+    var errSummary = $("validation-summary");
+    errSummary.innerText = "";
 }
 function addGroceryItem() {
     console.log("Added to grocery list");
+    clearAllErrors();
     if (isValid()) {
         var groceryItem = getGroceryItem();
         displayGroceryItem(groceryItem);
