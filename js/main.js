@@ -13,21 +13,26 @@ function isValid() {
     var enteredItem = itemBox.value;
     if (enteredItem == "") {
         isDataValid = false;
-        var errSummary = $("validation-summary");
-        var errItem = document.createElement("li");
-        errItem.innerText = "Item is required and must be in 'abc' format";
-        errSummary.appendChild(errItem);
+        addErrorMessage("Item is required");
     }
     var priceBox = $("price");
     var enteredPrice = priceBox.value;
     if (enteredPrice == "" || isNaN(parseFloat(enteredPrice))) {
         isDataValid = false;
-        var errSummary = $("validation-summary");
-        var errItem = document.createElement("li");
-        errItem.innerText = "Price is required and must be a number";
-        errSummary.appendChild(errItem);
+        addErrorMessage("Price is required and must be a number");
+    }
+    var categoryBox = $("category").value;
+    if (categoryBox == "") {
+        isDataValid = false;
+        addErrorMessage("Must choose a category");
     }
     return isDataValid;
+}
+function addErrorMessage(errMsg) {
+    var errSummary = $("validation-summary");
+    var errItem = document.createElement("li");
+    errItem.innerText = errMsg;
+    errSummary.appendChild(errItem);
 }
 function clearAllErrors() {
     var errSummary = $("validation-summary");

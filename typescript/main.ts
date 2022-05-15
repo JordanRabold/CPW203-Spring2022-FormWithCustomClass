@@ -18,24 +18,29 @@ function isValid():boolean{
     let enteredItem:string = itemBox.value;
     if(enteredItem == ""){
         isDataValid = false;
-        let errSummary = $("validation-summary"); // get validation summary off webpage
-        let errItem = document.createElement("li"); // create list item 
-        errItem.innerText = "Item is required and must be in 'abc' format"; // fill the error list
-
-        errSummary.appendChild(errItem); // add list item to unordered list
+        addErrorMessage("Item is required"); // insert string parameter
     }
 
     let priceBox:HTMLInputElement = <HTMLInputElement>$("price");
     let enteredPrice:string = priceBox.value;
     if(enteredPrice == "" || isNaN(parseFloat(enteredPrice))){
         isDataValid = false;
-        let errSummary = $("validation-summary"); // get validation summary off webpage
-        let errItem = document.createElement("li"); // create list item 
-        errItem.innerText = "Price is required and must be a number"; // fill the error list
+        addErrorMessage("Price is required and must be a number"); // insert string parameter
+    }
 
-        errSummary.appendChild(errItem); // add list item to unordered list
+    let categoryBox = (<HTMLOptionElement>$("category")).value;
+    if(categoryBox == ""){
+        isDataValid = false;
+        addErrorMessage("Must choose a category");
     }
     return isDataValid;
+}
+
+function addErrorMessage(errMsg:string) {
+    let errSummary = $("validation-summary"); // get validation summary off webpage
+    let errItem = document.createElement("li"); // create list item 
+    errItem.innerText = errMsg; // fill the error list
+    errSummary.appendChild(errItem);
 }
 
 /**
